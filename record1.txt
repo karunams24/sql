@@ -1,0 +1,68 @@
+ 1.Create a table EMPLOYEE have the following fields (emp_id, name,city,dob,adhar_no) 
+ mysql>create table employee3(emp_id int primary key,name varchar(20),city varchar(20),dob date not null,gender char default'f',adhar_no int unique);
+Query OK, 0 rows affected (0.97 sec)
+
+mysql> desc employee3;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | int         | NO   | PRI | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| city     | varchar(20) | YES  |     | NULL    |       |
+| dob      | date        | NO   |     | NULL    |       |
+| gender   | char(1)     | YES  |     | f       |       |
+| adhar_no | int         | YES  | UNI | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2. Create a table STUDENT have the fields(roll_no, name, age, address, gender)and add
+following constraints on it.
+Roll_no – Primary key
+Name – does not allow null values
+Age- must be in between (0-99), does not allow null values
+Gender- default value is ‘m’ 
+
+Ans:
+create table studentt(roll_no int primary key,name varchar(20),age int not null check (age between 0 and 99),address varchar(30),gender char default'm');
+Query OK, 0 rows affected (0.60 sec)
+
+mysql> desc studentt;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| age     | int         | NO   |     | NULL    |       |
+| address | varchar(30) | YES  |     | NULL    |       |
+| gender  | char(1)     | YES  |     | m       |       |
++---------+-------------+------+-----+---------+-------+
+3. Create a temporary table STUDENT1 of STUDENT relation
+Ans:
+create temporary table student1 select * from studentt;
+mysql> desc student1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | int         | NO   |     | NULL    | NULL  |
+| name    | varchar(20) | YES  |     | NULL    | NULL  |
+| age     | int         | NO   |     | NULL    | NULL  |
+| address | varchar(30) | YES  |     | NULL    | NULL  |
+| gender  | char(1)     | YES  |     | m       | NULL  |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+4. Create a duplicate table of EMPLOYEE. 
+Ans:
+mysql> create table employeedupe as select*from employee;
+Query OK, 0 rows affected (0.83 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employeedupe;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
+| age     | int         | YES  |     | NULL    |       |
+| address | char(50)    | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
