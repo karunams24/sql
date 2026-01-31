@@ -90,5 +90,6 @@ create table invoice_item(inv_id int,foreign key(inv_id)references invoice_maste
 not null);
 Query OK, 0 rows affected (0.97 sec)
 
-
+//RESUBMIT
+//DESCRIBE INVOICE DATABSE TABLES
 
