@@ -1,0 +1,44 @@
+1. List the product name and quantity of invoice items.
+mysql> select product.pname,invoice_item.quantity from product join invoice_item on product.pid=invoice_item.pid;
++---------+----------+
+| pname   | quantity |
++---------+----------+
+| oppo f5 |       10 |
+| iphone  |       20 |
+| oppo f5 |       10 |
+| oppo f5 |        1 |
+| iphone  |       12 |
++---------+----------+
+5 rows in set (0.00 sec)
+
+
+2.. Display the customer name, product name, invoice date of purchased item ‘pen’. 
+
+mysql> SELECT customer.name, product.pname, invoice_master.inv_date FROM customer INNER JOIN invoice_master ON customer.cust_id = invoice_master.cust_id
+INNER JOIN invoice_item ON invoice_master.inv_id = invoice_item.inv_id INNER JOIN product ON invoice_item.pid = product.pid WHERE product.pname = 'oppo f5';
++--------+---------+------------+
+| name   | pname   | inv_date   |
++--------+---------+------------+
+| anurak | oppo f5 | 2025-12-05 |
+| jaya   | oppo f5 | 2025-02-15 |
+| aswani | oppo f5 | 2025-02-02 |
++--------+---------+------------+
+3 rows in set (0.00 sec)
+
+
+3. Display all customer details and invoice details must include customer has not
+purchased items.
+mysql> SELECT*from customer left outer join invoice_master on customer.cust_id=invoice_master.cust_id ;
++---------+----------+--------------+----------+-------------+--------+---------+------------+
+| cust_id | name     | address      | city     | ph_no       | inv_id | cust_id | inv_date   |
++---------+----------+--------------+----------+-------------+--------+---------+------------+
+|     101 | anurak   | nirmalyam    | tvm      | 27561       |   1001 |     101 | 2025-12-05 |
+|     102 | jaya     | house        | tvm      | 1982        |   1002 |     102 | 2025-02-15 |
+|     103 | mohathis | kv house     | edappal  | 529876398   |   1005 |     103 | 2025-06-27 |
+|     104 | mubashir | ck para      | mlp      | 12345678910 |   1006 |     104 | 2025-05-09 |
+|     105 | aswani   | aswanibhavan | manaseri | 4569873     |   1007 |     105 | 2025-02-02 |
+|     106 | punnya   | pk house     | tvm      | 898555555   |   1008 |     106 | 2025-03-18 |
++---------+----------+--------------+----------+-------------+--------+---------+------------+
+6 rows in set (0.00 sec)
+
+
