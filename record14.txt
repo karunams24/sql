@@ -42,6 +42,14 @@ invoice> db.customer.insertMany([{"name":"blessy","address":"mumbai"},{"name":"m
   }
 }
 
+db.product.insert({"pname":"stapler","quantity":4,"price":15})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('69b8ec2bdffc6de41489b03d') }
+}
+
+
+
 2. Write a MongoDB query to find all documents from the collection CUSTOMER 
 
 invoice> db.customer.find()
@@ -66,7 +74,8 @@ invoice> db.customer.find()
     name: 'manjusha',
     address: 'pta'
    }
-  ]
+
+ ]
 
 
 3. Write a MongoDB query to update the city in the collection CUSTOMER. 
@@ -112,4 +121,3 @@ invoice> db.customer.find()
   }
 ]
 
- 
